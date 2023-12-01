@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BallControl : MonoBehaviour
 {
-    public float ballspeed = 8.0f;          //공의 속도
+    public float ballSpeed = 8.0f;          //공의 속도
     public bool isBallReleased = false;      //공이 패들에서 떨어졌는가 (붙어있음)
 
     public Vector2 ballDirection;           //공의 방향
@@ -18,25 +18,25 @@ public class BallControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (isballreleased)
-        //{
-        //    vector3 paddleposition = gameobject.find("paddle").transform.position;        ////패들 오브젝트의 위치를 찾아옴
+        if (!isBallReleased)
+        {
+            Vector3 paddleposition = GameObject.Find("paddle").transform.position;        ////패들 오브젝트의 위치를 찾아옴
 
-        //    vector3 ballposition = paddleposition;        ////공의 위치를 패들의 위치로 변경
-        //    ballposition.y += 0.1f;                       //// 공과 패들사이 간격
-        //    transform.position = ballposition;            //// 공을 패들에 위치
+            Vector3 ballposition = paddleposition;        ////공의 위치를 패들의 위치로 변경
+            ballposition.y += 0.1f;                       //// 공과 패들사이 간격
+            transform.position = ballposition;            //// 공을 패들에 위치
 
-        //    if (input.getbuttondown("fire")) //// 공 발사
-        //    {
-        //        isballreleased = true;        ////공이 패들에서 떨어짐
+            if (Input.GetButtonDown("Fire1")) //// 공 발사
+            {
+                isBallReleased = true;        ////공이 패들에서 떨어짐
 
-        //        balldirection = new vector2(random.range(-1f, 1f), 1).normalized;         //// 위쪽 랜덤방향으로 공 발사(직각으로 발사할 경우 random.range를 빼고 좌표룰 설정해준다.
-        //    }
-        //}
-        //else
-        //{
-        //    transform.position = (balldirection * ballspeed * time.deltatime);        ////시간에 따른 공의 이동    방향*속도*시간
-        //}
+                ballDirection = new Vector2(Random.Range(-1f, 1f), 1).normalized;         //// 위쪽 랜덤방향으로 공 발사(직각으로 발사할 경우 random.range를 빼고 좌표룰 설정해준다.
+            }
+        }
+        else
+        {
+            transform.Translate(ballDirection * ballSpeed * Time.deltaTime);        ////시간에 따른 공의 이동    방향*속도*시간
+        }
 
         void OnCollisionEnter2D(Collision2D collision) //rigid2D나 coli2D가 다른 rigid2D나 coli2D에 부딪혔을때 실행
         {
