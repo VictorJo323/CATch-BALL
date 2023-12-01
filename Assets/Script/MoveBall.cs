@@ -13,7 +13,12 @@ public class MoveBall : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Start()
+    private void Update()
+    {
+        if (Input.GetMouseButtonUp(0)) MoveBalll();
+    }
+
+    public void MoveBalll()
     {
         x = 0;
         y = 1;
