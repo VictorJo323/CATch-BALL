@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class BallControl : MonoBehaviour
 {
-    public float ballSpeed = 8.0f;          //공의 속도
+    public float ballSpeed = 8.0f;
+
+    public Vector2 ballDirection; //공의 속도
     public bool isBallReleased = false;      //공이 패들에서 떨어졌는가 (붙어있음)
 
-    public Vector2 ballDirection;           //공의 방향
+    //공의 방향
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +22,11 @@ public class BallControl : MonoBehaviour
     {
         if (!isBallReleased)
         {
-            Vector3 paddleposition = GameObject.Find("paddle").transform.position;        ////패들 오브젝트의 위치를 찾아옴
+            Vector3 paddlePosition = GameObject.Find("Paddle").transform.position;        ////패들 오브젝트의 위치를 찾아옴
 
-            Vector3 ballposition = paddleposition;        ////공의 위치를 패들의 위치로 변경
-            ballposition.y += 0.1f;                       //// 공과 패들사이 간격
-            transform.position = ballposition;            //// 공을 패들에 위치
+            Vector3 ballPosition = paddlePosition;        ////공의 위치를 패들의 위치로 변경
+            ballPosition.y += 0.1f;                       //// 공과 패들사이 간격
+            transform.position = ballPosition;            //// 공을 패들에 위치
 
             if (Input.GetButtonDown("Fire1")) //// 공 발사
             {
@@ -38,19 +40,22 @@ public class BallControl : MonoBehaviour
             transform.Translate(ballDirection * ballSpeed * Time.deltaTime);        ////시간에 따른 공의 이동    방향*속도*시간
         }
 
-        void OnCollisionEnter2D(Collision2D collision) //rigid2D나 coli2D가 다른 rigid2D나 coli2D에 부딪혔을때 실행
+
+
+
+    }
+    private void OnCollisionEnter2D(Collision2D collision) //rigid2D나 coli2D가 다른 rigid2D나 coli2D에 부딪혔을때 실행
+    {
+        if (collision.gameObject.CompareTag("Wall")|| collision.gameObject.CompareTag("Brick")) // 게임오브젝트 Wall 태그에 충돌
         {
-            if (collision.gameObject.CompareTag("Wall")) // 게임오브젝트 Wall 태그에 충돌
-            {
-                ballDirection = Vector2.Reflect(ballDirection, collision.contacts[0].normal);   // 벽에 충돌할때 방향 반전
-            }
-            else if (collision.gameObject.CompareTag("Paddle"))     //패들과 충돌할때 방향설정
-            {
-                float hitpoint = collision.contacts[0].point.x;     // 충돌 지점의 x좌표를 hitpoint에 저장
-                float paddleCenter = collision.transform.position.x;        //패들의 중심 x좌표를 paddlecenter에 저장
-                float angle = (hitpoint - paddleCenter) * 2.0f;         // 충돌점과 중심으로 각도 계산
-                ballDirection = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)).normalized; // 각도를 기반으로 방향벡터를 만들고 normalized로 크기1로 만듦 
-            }
+            ballDirection = Vector2.Reflect(ballDirection, collision.contacts[0].normal);   // 벽에 충돌할때 방향 반전
+        }
+        else if (collision.gameObject.CompareTag("Paddle"))     //패들과 충돌할때 방향설정
+        {
+            float hitpoint = collision.contacts[0].point.x;     // 충돌 지점의 x좌표를 hitpoint에 저장
+            float paddleCenter = collision.transform.position.x;        //패들의 중심 x좌표를 paddlecenter에 저장
+            float angle = (hitpoint - paddleCenter) * 2.0f;         // 충돌점과 중심으로 각도 계산
+            ballDirection = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)).normalized; // 각도를 기반으로 방향벡터를 만들고 normalized로 크기1로 만듦 
         }
     }
 }
