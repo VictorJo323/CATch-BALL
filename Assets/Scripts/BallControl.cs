@@ -42,8 +42,9 @@ public class BallControl : MonoBehaviour
             transform.Translate(ballDirection * ballSpeed * Time.deltaTime);        ////시간에 따른 공의 이동    방향*속도*시간
         }
 
-        if (gameObject.transform.position.y<-5)
+        if (gameObject.transform.position.y<=-5)
         {
+            Debug.Log("아아");
             Invoke("BallReleased", 0.5f);
         }
 
