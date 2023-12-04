@@ -57,5 +57,18 @@ public class BallControl : MonoBehaviour
             float angle = (hitpoint - paddleCenter) * 2.0f;         // 충돌점과 중심으로 각도 계산
             ballDirection = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)).normalized; // 각도를 기반으로 방향벡터를 만들고 normalized로 크기1로 만듦 
         }
+
+        else if (collision.gameObject.CompareTag("BottomWall"))
+        {
+            Invoke("BallReleased", 0.5f);
+        }
     }
+
+    private void BallReleased()
+    {
+        isBallReleased = false;
+        GameManager.I.PlayerHP -= 1;
+    }
+
+
 }
