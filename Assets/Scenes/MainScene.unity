@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d14b1b04fec3f5449d105bbcfd703ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 15
 --- !u!50 &25160513
 Rigidbody2D:
   serializedVersion: 4
@@ -321,7 +322,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -360,10 +361,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92bed91b42591dd40b271572bb6e3b07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brick1: {fileID: 5083005725485907763, guid: 5247711843af85a40bdabf97a718dbd2, type: 3}
-  brick2: {fileID: 3348202699983946022, guid: a6103f11fcda28f4fbcea7582286f122, type: 3}
-  brick3: {fileID: 3072745690988507878, guid: 425d87877e6c72d4dba07318646edc5d, type: 3}
-  brick4: {fileID: 5240546154104962134, guid: d531f6a8532e1c247831874af31e6088, type: 3}
+  brick1: {fileID: 2573911114911381682, guid: 0d8bbd528e0801b46b0941fc8df8f7d4, type: 3}
+  brick2: {fileID: 6051098864524842800, guid: a5a742fcfdb07bf48802cab53d2d9556, type: 3}
+  brick3: {fileID: 5337057876173095650, guid: b62fcaa961d2220479028cfb8aaaeff2, type: 3}
+  brick4: {fileID: 3722025176374310055, guid: c08d61cf189bf234f8e80e4b459abd64, type: 3}
 --- !u!4 &868581105
 Transform:
   m_ObjectHideFlags: 0
@@ -750,7 +751,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -927,10 +928,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90bb179a0d9d87940bb189db15ab8c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerHP: 0
-  EndTxt: {fileID: 0}
-  PlayerScore: 0
-  ScoreTxt: {fileID: 0}
 --- !u!114 &1587878128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1138,7 +1135,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
