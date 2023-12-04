@@ -15,25 +15,22 @@ public class ItemManager : MonoBehaviour
         {
             switch (gameObject.name)
             {
-                case "item01(Clone)":
+                case "Item_01(Clone)":
                     iteme1();
                     break;
 
-                case "item02(Clone)":
+                case "Item_02(Clone)":
                     iteme2();
                     break;
 
-                case "item03(Clone)":
-                   iteme3();
+                case "Item_03(Clone)":
+                    iteme3();
                     break;
 
                 default:
                     iteme4();
                     break;
-
-
             }
-
             Destroy(gameObject);
         }
     }
