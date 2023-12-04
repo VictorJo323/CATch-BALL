@@ -54,10 +54,8 @@ public class ItemManager : MonoBehaviour
         GameManager.I.PlayerScore += 4;
     }
 
-    private void OnDisenable()
+    private void OnDisable()
     {
         Destroy(gameObject);
     }
-
-
 }
