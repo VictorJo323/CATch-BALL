@@ -9,7 +9,7 @@ public class DeleteBrick : MonoBehaviour
         if (collision.gameObject.tag == "Ball")
         {
             int brickID = GetComponent<Brick>().brickID;
-            ItemManager.Instance.DropItem(brickID, transform.position);
+            ItemCreator.Instance.DropItem(brickID, transform.position);
             Destroy(gameObject);
         }
     }

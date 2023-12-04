@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemManager : MonoBehaviour
+public class ItemCreator : MonoBehaviour
 {
-    public static ItemManager Instance { get; private set; }
+    public static ItemCreator Instance { get; private set; }
     public GameObject[] items;
 
 

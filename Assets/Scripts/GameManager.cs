@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         {
             GameEnd();
         }
+        Debug.Log(PlayerScore);
     }
 
     void GameEnd()
