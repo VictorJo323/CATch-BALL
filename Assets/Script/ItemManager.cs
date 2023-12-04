@@ -4,19 +4,30 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
-
-        public string ItemName { get; } // 아이템 이름 
-        public string ItemInform { get; } // 아이템 설명
-
-        public int ItemNum { get;}
+    public static ItemManager Instance { get; private set; }
+    public GameObject[] items;
 
 
-        public ItemManager(int itemNum,string name, string inform)
+    private void Awake()
+    {
+        if (Instance == null)
         {
-            ItemName = name;
-            ItemInform = inform;
-            ItemNum = itemNum;
-
+            Instance = this;
         }
-
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
+    public void DropItem(int itemID, Vector2 position)
+    {
+        if (itemID<=0 || itemID -1 >= items.Length)
+        {
+            Debug.LogWarning("NoItem");
+            return;
+        }
+        Instantiate(items[itemID - 1], position, Quaternion.identity);
+    }
+}
+
+
