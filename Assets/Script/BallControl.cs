@@ -20,6 +20,8 @@ public class BallControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if (!isBallReleased)
         {
             Vector3 paddlePosition = GameObject.Find("Paddle").transform.position;        ////패들 오브젝트의 위치를 찾아옴
@@ -40,6 +42,11 @@ public class BallControl : MonoBehaviour
             transform.Translate(ballDirection * ballSpeed * Time.deltaTime);        ////시간에 따른 공의 이동    방향*속도*시간
         }
 
+        if (gameObject.transform.position.y<-5)
+        {
+            Invoke("BallReleased", 0.5f);
+        }
+
 
 
 
@@ -50,7 +57,8 @@ public class BallControl : MonoBehaviour
         {
             ballDirection = Vector2.Reflect(ballDirection, collision.contacts[0].normal);   // 벽에 충돌할때 방향 반전
         }
-        else if (collision.gameObject.CompareTag("Paddle"))     //패들과 충돌할때 방향설정
+
+        if (collision.gameObject.CompareTag("Paddle"))     //패들과 충돌할때 방향설정
         {
             float hitpoint = collision.contacts[0].point.x;     // 충돌 지점의 x좌표를 hitpoint에 저장
             float paddleCenter = collision.transform.position.x;        //패들의 중심 x좌표를 paddlecenter에 저장
@@ -58,10 +66,15 @@ public class BallControl : MonoBehaviour
             ballDirection = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)).normalized; // 각도를 기반으로 방향벡터를 만들고 normalized로 크기1로 만듦 
         }
 
-        else if (collision.gameObject.CompareTag("BottomWall"))
+
+        if (collision.gameObject.CompareTag("Brick"))
         {
-            Invoke("BallReleased", 0.5f);
+            Debug.Log("부딪혔다!");
+            Destroy(collision.gameObject);
+
         }
+
+
     }
 
     private void BallReleased()
@@ -69,6 +82,8 @@ public class BallControl : MonoBehaviour
         isBallReleased = false;
         GameManager.I.PlayerHP -= 1;
     }
+
+     
 
 
 }

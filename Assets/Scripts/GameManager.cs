@@ -4,18 +4,21 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using static UnityEditor.Progress;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager I;
     public int PlayerHP;
-    public Text timeTxt;
     public GameObject EndTxt;
+    public int PlayerScore;
+    public Text ScoreTxt;
 
     private void Awake()
     {
         I = this;
         PlayerHP = 3;
+        PlayerScore = 0;
     }
 
     // Start is called before the first frame update
@@ -38,5 +41,6 @@ public class GameManager : MonoBehaviour
         EndTxt.SetActive(true);
     }
 
+   
 
 }
