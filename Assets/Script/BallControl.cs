@@ -33,6 +33,8 @@ public class BallControl : MonoBehaviour
                 isBallReleased = true;        ////공이 패들에서 떨어짐
 
                 ballDirection = new Vector2(Random.Range(-1f, 1f), 1).normalized;         //// 위쪽 랜덤방향으로 공 발사(직각으로 발사할 경우 random.range를 빼고 좌표룰 설정해준다.
+                AudioManager.instance.PlayBgm(true); // 게임시작할때 BGM을 틀어주는 함수인데 아직 START 함수가 따로 없어서 여기다 넣어뒀어요.
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.cannon); // 공 발사 소리
             }
         }
         else
@@ -49,13 +51,16 @@ public class BallControl : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall")|| collision.gameObject.CompareTag("Brick")) // 게임오브젝트 Wall 태그에 충돌
         {
             ballDirection = Vector2.Reflect(ballDirection, collision.contacts[0].normal);   // 벽에 충돌할때 방향 반전
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.laser);
         }
         else if (collision.gameObject.CompareTag("Paddle"))     //패들과 충돌할때 방향설정
         {
             float hitpoint = collision.contacts[0].point.x;     // 충돌 지점의 x좌표를 hitpoint에 저장
             float paddleCenter = collision.transform.position.x;        //패들의 중심 x좌표를 paddlecenter에 저장
             float angle = (hitpoint - paddleCenter) * 2.0f;         // 충돌점과 중심으로 각도 계산
-            ballDirection = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)).normalized; // 각도를 기반으로 방향벡터를 만들고 normalized로 크기1로 만듦 
+            ballDirection = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)).normalized; // 각도를 기반으로 방향벡터를 만들고 normalized로 크기1로 만듦
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.magic);
+
         }
     }
 }
