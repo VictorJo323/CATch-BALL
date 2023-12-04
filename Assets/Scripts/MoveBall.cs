@@ -21,4 +21,13 @@ public class MoveBall : MonoBehaviour
 
         rb.AddForce(dir * speed);
     }
+
+    private void Update()
+    {
+        if (gameObject.transform.position.y <= -5)
+        {
+            Debug.Log("¾Æ¾Æ");
+            Invoke("BallReleased", 0.5f);
+        }
+    }
 }
