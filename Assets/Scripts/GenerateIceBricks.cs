@@ -32,15 +32,19 @@ public class NewBehaviourScript : MonoBehaviour
             {
                 case 2:
                     newBrick = Instantiate(brick2);
+
                     break;
                 case 3:
                     newBrick = Instantiate(brick3);
+
                     break;
                 case 4:
                     newBrick = Instantiate(brick4);
+
                     break;
                 default:  // 사실상 디폴트값이 존재할 수 없으나 switch구문때문에 필요. case1을 default값으로 돌림.
                     newBrick = Instantiate(brick1);
+
                     break;
             }
             newBrick.transform.parent = GameObject.Find("Bricks").transform;   // GameObject Bricks의 자식으로 복제한 블럭들을 집어넣음.
