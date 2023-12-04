@@ -13,7 +13,6 @@ public class BlockManager : MonoBehaviour
     void Start()
     {
         blockItem();
-        
     }
 
     // Update is called once per frame
