@@ -23,7 +23,7 @@ public class BallControl : MonoBehaviour
         {
             Vector3 paddlePosition = GameObject.Find("Paddle").transform.position;        ////패들 오브젝트의 위치를 찾아옴
             Vector3 ballPosition = paddlePosition;        ////공의 위치를 패들의 위치로 변경
-            ballPosition.y += 0.1f;                       //// 공과 패들사이 간격
+            ballPosition.y -= 4.1f;                       //// 공과 패들사이 간격
             transform.position = ballPosition;            //// 공을 패들에 위치
             if (Input.GetButtonDown("Fire1")) //// 공 발사
             {
