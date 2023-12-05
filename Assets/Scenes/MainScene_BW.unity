@@ -692,7 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgmClip: {fileID: 8300000, guid: c30fb566db8d61c47b24b39f932ba848, type: 3}
-  bgmVolume: 0.8
+  bgmVolume: 0
   sfxClips:
   - {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
   - {fileID: 8300000, guid: 8401456349c492a489ed90469e317e43, type: 3}
@@ -781,6 +781,7 @@ GameObject:
   - component: {fileID: 1571405102}
   - component: {fileID: 1571405101}
   - component: {fileID: 1571405105}
+  - component: {fileID: 1571405106}
   m_Layer: 6
   m_Name: ball
   m_TagString: Ball
@@ -937,6 +938,18 @@ MonoBehaviour:
   ballSpeed: 8
   ballDirection: {x: 0, y: 0}
   isBallReleased: 0
+--- !u!114 &1571405106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571405098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ff2ff70ca8764f54ab8fc3f51babdcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1579197229
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,17 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class SceneHandler : MonoBehaviour
 {
-    void Update()
+
+    private void Update()
     {
-        Debug.Log("aaaaa");
         if(GameManager.I.PlayerHP <= 0)
         {
             LoadEndScene();
+            GameManager.I.PlayerHP += 3;
         }
     }
 
-    void LoadEndScene()
+    public void LoadEndScene()
     {
         SceneManager.LoadScene("EndScene");
+    }
+
+    public void LoadMainScene()
+    {
+        SceneManager.LoadScene("MainScene_BW");
     }
 }

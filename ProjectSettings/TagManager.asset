@@ -9,6 +9,8 @@ TagManager:
   - Paddle
   - BottomWall
   - Ball
+  - NormalCat
+  - BadCat
   layers:
   - Default
   - TransparentFX
