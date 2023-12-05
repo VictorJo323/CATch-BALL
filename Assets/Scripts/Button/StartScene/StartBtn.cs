@@ -18,6 +18,6 @@ public class StartBtn : MonoBehaviour
     }
     public void startGame()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("MainScene_BW");
     }
 }
