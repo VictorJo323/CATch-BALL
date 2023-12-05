@@ -8,82 +8,50 @@ using UnityEngine.SceneManagement;
 public class BallControl : MonoBehaviour
 {
     public float ballSpeed = 8.0f;
-
-    public Vector2 ballDirection; //���� �ӵ�
-    public bool isBallReleased = false;      //���� �е鿡�� �������°� (�پ�����)
-
-    //���� ����
+    public Vector2 ballDirection; //공의 속도
+    public bool isBallReleased = false;      //공이 패들에서 떨어졌는가 (붙어있음)
+    //공의 방향
     // Start is called before the first frame update
     void Start()
     {
-        ballDirection = Vector2.up.normalized;      //ó�� �����Ҷ� ���� ������ ��������
+        ballDirection = Vector2.up.normalized;      //처음 시작할때 공의 방향을 위쪽으로
     }
-
     // Update is called once per frame
     void Update()
     {
-
-
         if (!isBallReleased)
         {
-            Vector3 paddlePosition = GameObject.Find("Paddle").transform.position;        ////�е� ������Ʈ�� ��ġ�� ã�ƿ�
-
-            Vector3 ballPosition = paddlePosition;        ////���� ��ġ�� �е��� ��ġ�� ����
-            ballPosition.y -= 4;
-            transform.position = ballPosition;            //// ���� �е鿡 ��ġ
-
-            if (Input.GetButtonDown("Fire1")) //// �� �߻�
+            Vector3 paddlePosition = GameObject.Find("Paddle").transform.position;        ////패들 오브젝트의 위치를 찾아옴
+            Vector3 ballPosition = paddlePosition;        ////공의 위치를 패들의 위치로 변경
+            ballPosition.y -= 4.1f;                       //// 공과 패들사이 간격
+            transform.position = ballPosition;            //// 공을 패들에 위치
+            if (Input.GetButtonDown("Fire1")) //// 공 발사
             {
-                isBallReleased = true;        ////���� �е鿡�� ������
-
-                ballDirection = new Vector2(Random.Range(-1f, 1f), 1).normalized;         //// ���� ������������ �� �߻�(�������� �߻��� ��� random.range�� ���� ��ǥ�� �������ش�.
+                isBallReleased = true;        ////공이 패들에서 떨어짐
+                ballDirection = new Vector2(Random.Range(-1f, 1f), 1).normalized;         //// 위쪽 랜덤방향으로 공 발사(직각으로 발사할 경우 random.range를 빼고 좌표룰 설정해준다.
+                AudioManager.instance.PlayBgm(true); // 게임시작할때 BGM을 틀어주는 함수인데 아직 START 함수가 따로 없어서 여기다 넣어뒀어요.
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.cannon); // 공 발사 소리
             }
         }
         else
         {
-            transform.Translate(ballDirection * ballSpeed * Time.deltaTime);        ////�ð��� ���� ���� �̵�    ����*�ӵ�*�ð�
-        }
-
-        if (gameObject.transform.position.y<=-5)
-        {
-            Debug.Log("�ƾ�");
-            Invoke("BallReleased", 0.5f);
-        }
-
-
-
-
-    }
-    private void OnCollisionEnter2D(Collision2D collision) //rigid2D�� coli2D�� �ٸ� rigid2D�� coli2D�� �ε������� ����
-    {
-        if (collision.gameObject.CompareTag("Wall")|| collision.gameObject.CompareTag("Brick")) // ���ӿ�����Ʈ Wall �±׿� �浹
-        {
-            ballDirection = Vector2.Reflect(ballDirection, collision.contacts[0].normal);   // ���� �浹�Ҷ� ���� ����
-        }
-
-        if (collision.gameObject.CompareTag("Paddle"))     //�е�� �浹�Ҷ� ���⼳��
-        {
-            float hitpoint = collision.contacts[0].point.x;     // �浹 ������ x��ǥ�� hitpoint�� ����
-            float paddleCenter = collision.transform.position.x;        //�е��� �߽� x��ǥ�� paddlecenter�� ����
-            float angle = (hitpoint - paddleCenter) * 2.0f;         // �浹���� �߽����� ���� ���
-            ballDirection = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)).normalized; // ������ ������� ���⺤�͸� ����� normalized�� ũ��1�� ���� 
-        }
-
-
-        if (collision.gameObject.CompareTag("Brick"))
-        {
-            Debug.Log("�ε�����!");
-            Destroy(collision.gameObject);
+            transform.Translate(ballDirection * ballSpeed * Time.deltaTime);        ////시간에 따른 공의 이동    방향*속도*시간
         }
     }
-
-    private void BallReleased()
+    private void OnCollisionEnter2D(Collision2D collision) //rigid2D나 coli2D가 다른 rigid2D나 coli2D에 부딪혔을때 실행
     {
-        isBallReleased = false;
-        if (GameManager.I.PlayerHP <= 0)
+        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Brick")) // 게임오브젝트 Wall 태그에 충돌
         {
-            SceneManager.LoadScene("EndScene");
+            ballDirection = Vector2.Reflect(ballDirection, collision.contacts[0].normal);   // 벽에 충돌할때 방향 반전
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.laser);
         }
-        GameManager.I.PlayerHP -= 1;
+        else if (collision.gameObject.CompareTag("Paddle"))     //패들과 충돌할때 방향설정
+        {
+            float hitpoint = collision.contacts[0].point.x;     // 충돌 지점의 x좌표를 hitpoint에 저장
+            float paddleCenter = collision.transform.position.x;        //패들의 중심 x좌표를 paddlecenter에 저장
+            float angle = (hitpoint - paddleCenter) * 2.0f;         // 충돌점과 중심으로 각도 계산
+            ballDirection = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)).normalized; // 각도를 기반으로 방향벡터를 만들고 normalized로 크기1로 만듦
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.magic);
+        }
     }
 }
