@@ -15,7 +15,7 @@ public class AudioManager : MonoBehaviour
     public int channels;  // 다량의 효과음을 낼 수 있도록 채널 개수 변수 선언
     AudioSource[] sfxPlayers;
     int channelIndex;
-    public enum Sfx { cannon, card = 2, electronic, heal = 5, laser, magic = 8 }
+    public enum Sfx { ShootSound, Eatsound, HitSound, PaddleSound, WallSound, DropSound }
     private void Awake()
     {
         instance = this;
