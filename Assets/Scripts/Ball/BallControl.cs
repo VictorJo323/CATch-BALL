@@ -43,6 +43,16 @@ public class BallControl : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Brick")) // 게임오브젝트 Wall 태그에 충돌
         {
             ballDirection = Vector2.Reflect(ballDirection, collision.contacts[0].normal);   // 벽에 충돌할때 방향 반전
+
+            if (collision.gameObject.CompareTag("Wall"))
+            {
+                //★벽에 부딪힐때
+            }
+            else
+            {
+                //★벽돌에 부딪힐때
+            }
+
             AudioManager.instance.PlaySfx(AudioManager.Sfx.laser);
         }
         else if (collision.gameObject.CompareTag("Paddle"))     //패들과 충돌할때 방향설정
@@ -53,5 +63,20 @@ public class BallControl : MonoBehaviour
             ballDirection = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)).normalized; // 각도를 기반으로 방향벡터를 만들고 normalized로 크기1로 만듦
             AudioManager.instance.PlaySfx(AudioManager.Sfx.magic);
         }
+
+        if (collision.gameObject.CompareTag("BottomWall"))
+        {
+            BallRest();
+            //★바닥에 떨어졌때
+
+        }
+
+    }
+
+    void BallRest()
+    {
+        GameManager.I.PlayerHP -= 1;
+        isBallReleased = false;
+
     }
 }
