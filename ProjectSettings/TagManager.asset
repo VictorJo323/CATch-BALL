@@ -16,8 +16,8 @@ TagManager:
   - BottomWall
   - Water
   - UI
-  - Ball^Item
-  - 
+  - Ball
+  - BallItem
   - 
   - 
   - 
