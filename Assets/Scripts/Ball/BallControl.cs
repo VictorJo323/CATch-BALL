@@ -46,11 +46,11 @@ public class BallControl : MonoBehaviour
 
             if (collision.gameObject.CompareTag("Wall"))
             {
-                AudioManager.instance.PlaySfx(AudioManager.Sfx.WallSound); //★벽에 부딪힐때 소리
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Wall2Sound); //★벽에 부딪힐때 소리
             }
             else
             {
-                AudioManager.instance.PlaySfx(AudioManager.Sfx.HitSound);//★벽돌에 부딪힐때 소리
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.BreakSound);//★벽돌에 부딪힐때 소리
             }
 
             
@@ -61,7 +61,7 @@ public class BallControl : MonoBehaviour
             float paddleCenter = collision.transform.position.x;        //패들의 중심 x좌표를 paddlecenter에 저장
             float angle = (hitpoint - paddleCenter) * 2.0f;         // 충돌점과 중심으로 각도 계산
             ballDirection = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)).normalized; // 각도를 기반으로 방향벡터를 만들고 normalized로 크기1로 만듦
-            AudioManager.instance.PlaySfx(AudioManager.Sfx.PaddleSound);
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Cat2Sound); //★패들과 공이 부딪힐때 냐옹~
         }
 
         if (collision.gameObject.CompareTag("BottomWall"))
