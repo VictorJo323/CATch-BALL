@@ -24,7 +24,7 @@ public class MoveBall : MonoBehaviour
 
     private void Update()
     {
-        if (gameObject.transform.position.y <= -5)
+        if (gameObject.transform.position.y == -5)
         {
             Debug.Log("¾Æ¾Æ");
             Invoke("BallReleased", 0.5f);
