@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public int PlayerHP;
     public GameObject EndTxt;
     public int PlayerScore;
-    public Text ScoreTxt;
 
     private void Awake()
     {
