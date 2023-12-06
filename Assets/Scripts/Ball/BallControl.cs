@@ -13,7 +13,7 @@ public class BallControl : MonoBehaviour
     public PaddleAnimationControl paddleAnimation;
     //공의 방향
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         ballDirection = Vector2.up.normalized;      //처음 시작할때 공의 방향을 위쪽으로
     }
@@ -39,7 +39,7 @@ public class BallControl : MonoBehaviour
             transform.Translate(ballDirection * ballSpeed * Time.deltaTime);        ////시간에 따른 공의 이동    방향*속도*시간
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision) //rigid2D나 coli2D가 다른 rigid2D나 coli2D에 부딪혔을때 실행
+    public void OnCollisionEnter2D(Collision2D collision) //rigid2D나 coli2D가 다른 rigid2D나 coli2D에 부딪혔을때 실행
     {
         if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Brick")) // 게임오브젝트 Wall 태그에 충돌
         {
