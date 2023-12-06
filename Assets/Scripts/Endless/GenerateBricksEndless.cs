@@ -84,7 +84,7 @@ public class GenerateBricksEndless : MonoBehaviour
 
             float x = (i % 10) * 0.54f - 2.44f;
             float y = (i / 10) * 0.28f + 4.8f;
-            newBrick.transform.position = new Vector2(x, y);
+            newBrick.transform.position = new Vector2(x, y-2);
         }
     }
 }
