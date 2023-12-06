@@ -72,9 +72,9 @@ public class BallControl : MonoBehaviour
             {
                 AudioManager.instance.PlaySfx(AudioManager.Sfx.Cat2Sound); //★패들과 공이 부딪힐때 냐옹~
             }
-            else
+            if (DataHolder.Instance.button2 == true)
             {
-                // ★댕댕이 패들 소리
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.DogSound); //★패들과 공이 부딪힐때 멍!
             }
         }
 
