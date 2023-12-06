@@ -24,6 +24,10 @@ public class PaddleAnimationControl : MonoBehaviour
             Debug.Log("¸Ô¾ú´Ù");
             animator.SetTrigger("IsItemTaken");
         }
+    }
 
+    public void CatCryingAnimation()
+    {
+        animator.SetTrigger("IsBallDrop");
     }
 }

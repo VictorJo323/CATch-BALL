@@ -18,7 +18,7 @@ public class GenerateBricks : MonoBehaviour
 
     private void GenerateBrickGroup()
     {
-        for (int i= 0; i<63; i++)
+        for (int i= 0; i<70; i++)
         {
             GameObject newBrick;
             int id = giveIDToBricks.GiveBrickID(i);
@@ -40,8 +40,8 @@ public class GenerateBricks : MonoBehaviour
             newBrick.GetComponent<Brick>().SetBrickID(id);
             newBrick.transform.parent = GameObject.Find("Bricks").transform;
 
-            float x = (i % 9) * 0.54f - 2.16f;
-            float y = (i / 9) * 0.28f;
+            float x = (i % 10) * 0.54f - 2.44f;
+            float y = (i / 10) * 0.28f;
             newBrick.transform.position = new Vector2(x, y);
         }
     }
