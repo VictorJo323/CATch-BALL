@@ -866,51 +866,6 @@ Transform:
   m_Father: {fileID: 288755812}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &567970660
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 567970662}
-  - component: {fileID: 567970661}
-  m_Layer: 0
-  m_Name: SceneHandler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &567970661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 567970660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ff2ff70ca8764f54ab8fc3f51babdcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isGameStart: 0
---- !u!4 &567970662
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 567970660}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 522.08563, y: 1218.486, z: -0.9650513}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &592913985
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,6 +1318,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9516b3516fa4f0046ae1c5fbe8fba6dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PaddleCAT: {fileID: 1552855619}
+  PaddleDOG: {fileID: 1331509425}
 --- !u!1 &679050972
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,6 +1510,8 @@ MonoBehaviour:
   PlayerHP: 3
   EndTxt: {fileID: 0}
   PlayerScore: 0
+  block: {fileID: 0}
+  time: 0
 --- !u!4 &925988135
 Transform:
   m_ObjectHideFlags: 0
@@ -2194,7 +2153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgmClip: {fileID: 8300000, guid: 267a0562368421345b5308f4c853e2ab, type: 3}
-  bgmVolume: 0
+  bgmVolume: 0.5
   sfxClips:
   - {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
   - {fileID: 8300000, guid: 9fe330231cc2d4a01aa086aba00b09fd, type: 3}
@@ -2207,7 +2166,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 942c3589344c9124b81a9312b4427bba, type: 3}
   - {fileID: 8300000, guid: c1ff29f22d9f8d84ebc532c21ae41ebe, type: 3}
   - {fileID: 8300000, guid: ea48bbe4be749844581ed2613dbded8d, type: 3}
-  sfxVolume: 0
+  sfxVolume: 0.5
   channels: 16
 --- !u!4 &1288018626
 Transform:
@@ -2582,6 +2541,7 @@ GameObject:
   - component: {fileID: 1331509427}
   - component: {fileID: 1331509431}
   - component: {fileID: 1331509430}
+  - component: {fileID: 1331509432}
   m_Layer: 5
   m_Name: Dog_Idle_01
   m_TagString: Paddle
@@ -2761,6 +2721,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
+--- !u!114 &1331509432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331509425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e941559df5db82e49be28f11b482ab96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1340431810
 GameObject:
   m_ObjectHideFlags: 0
@@ -3313,6 +3285,7 @@ GameObject:
   - component: {fileID: 1552855621}
   - component: {fileID: 1552855625}
   - component: {fileID: 1552855624}
+  - component: {fileID: 1552855626}
   m_Layer: 5
   m_Name: Cat_Idle_01
   m_TagString: Paddle
@@ -3492,6 +3465,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
+--- !u!114 &1552855626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552855619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e941559df5db82e49be28f11b482ab96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1555831263
 GameObject:
   m_ObjectHideFlags: 0
@@ -3671,6 +3656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe17bc6776304047a84873407696018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObject: {fileID: 1302754605}
 --- !u!1 &1571405098
 GameObject:
   m_ObjectHideFlags: 0
@@ -3683,6 +3669,7 @@ GameObject:
   - component: {fileID: 1571405103}
   - component: {fileID: 1571405102}
   - component: {fileID: 1571405101}
+  - component: {fileID: 1571405106}
   - component: {fileID: 1571405107}
   m_Layer: 6
   m_Name: ball
@@ -3825,6 +3812,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -4}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1571405106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571405098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ff2ff70ca8764f54ab8fc3f51babdcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1571405107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3839,8 +3838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballSpeed: 8
   ballDirection: {x: 0, y: 0}
-  isBallReleased: 0
-  paddleAnimation: {fileID: 0}
+  paddleAnimation: {fileID: 1552855623}
 --- !u!1 &1579197229
 GameObject:
   m_ObjectHideFlags: 0
@@ -4421,6 +4419,7 @@ MonoBehaviour:
   brick2: {fileID: 3348202699983946022, guid: a6103f11fcda28f4fbcea7582286f122, type: 3}
   brick3: {fileID: 3072745690988507878, guid: 425d87877e6c72d4dba07318646edc5d, type: 3}
   brick4: {fileID: 5240546154104962134, guid: d531f6a8532e1c247831874af31e6088, type: 3}
+  time: 0
 --- !u!1 &2068170379
 GameObject:
   m_ObjectHideFlags: 0
