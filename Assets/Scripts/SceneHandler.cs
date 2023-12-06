@@ -30,6 +30,6 @@ public class SceneHandler : MonoBehaviour
 
     public void LoadMainScene()
     {
-        SceneManager.LoadScene("MainScene_BW");
+        SceneManager.LoadScene("StartScene");
     }
 }
