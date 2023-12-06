@@ -1,46 +1,42 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class Playermove : MonoBehaviour
 {
-    //[SerializeField] float speed = 1f;
-    Vector3 mousePos, transPos, targetPos;
+    public float cursorSpeed = 9f;
 
-    // Start is called before the first frame update
-
-    private void Awake()
-    {
-        
-    }
     void Start()
     {
-
+        
     }
 
     void Update()
     {
-        if (Time.timeScale != 0)
-        {
+        
+        
 
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            if (mousePos.x >= 2.8)
-            {
-                mousePos.x = 2.8f;
-            }
+            // y 좌표는 그대로 유지하여 메인 카메라 안에서 이동
+            mousePosition.y = transform.position.y;
+            mousePosition.z = transform.position.z;
 
-            else if (mousePos.x <= -2.8)
-            {
-                mousePos.x = -2.8f;
-            }
+            // 메인 카메라의 시야 겅계 가져오기
+            float cameraHalfWidth = Camera.main.orthographicSize * Camera.main.aspect;
 
-            transform.position = new Vector3(mousePos.x, 0, 0);
-        }
+            // x 좌표를 메인 카메라의 시야 경계로만큼 제한
+            mousePosition.x = Mathf.Clamp(mousePosition.x, -cameraHalfWidth, cameraHalfWidth);
 
+            // 마우스 커서 따라가기
+            transform.position = Vector3.Lerp(transform.position, mousePosition, Time.deltaTime * cursorSpeed);
     }
+    
+}
+
 
     /* Update is called once per frame
     void Update()
@@ -67,4 +63,4 @@ public class Playermove : MonoBehaviour
     // 클릭한 지점으로 패들이 이동할때의 코드
 
 
-}
+
