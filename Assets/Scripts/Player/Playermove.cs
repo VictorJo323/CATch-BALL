@@ -22,19 +22,23 @@ public class Playermove : MonoBehaviour
 
     void Update()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        if (mousePos.x >= 2.8)
+        if (Time.timeScale != 0)
         {
-            mousePos.x = 2.8f;
-        }
 
-        else if (mousePos.x <= -2.8)
-        {
-            mousePos.x = -2.8f;
-        }
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        transform.position = new Vector3(mousePos.x, 0, 0);
+            if (mousePos.x >= 2.8)
+            {
+                mousePos.x = 2.8f;
+            }
+
+            else if (mousePos.x <= -2.8)
+            {
+                mousePos.x = -2.8f;
+            }
+
+            transform.position = new Vector3(mousePos.x, 0, 0);
+        }
 
     }
 

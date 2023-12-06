@@ -10,9 +10,9 @@ public class GiveIDToBricks
     public GiveIDToBricks()
     {
         random = new System.Random();
-        brickID = new int[63];
+        brickID = new int[70];
 
-        for (int i = 0; i < 63; i++)
+        for (int i = 0; i < 70; i++)
         {
             brickID[i] = random.Next(1, 5);
         }
