@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     public GameObject EndTxt;
     public int PlayerScore;
 
+    public GameObject block;
+    public float time = 0.0f;
+    private int blockNum;
+
     private void Awake()
     {
         I = this;
@@ -21,11 +25,10 @@ public class GameManager : MonoBehaviour
     }
 
 
-
     // Start is called before the first frame update
     //void Start()
     //{
-        
+
     //}
 
     //// Update is called once per frame
@@ -43,6 +46,6 @@ public class GameManager : MonoBehaviour
     //    EndTxt.SetActive(true);
     //}
 
-   
+
 
 }

@@ -9,7 +9,7 @@ public class BallControl : MonoBehaviour
 {
     public float ballSpeed = 8.0f;
     public Vector2 ballDirection; //공의 속도
-    public bool isBallReleased = false;      //공이 패들에서 떨어졌는가 (붙어있음)
+    static public bool isBallReleased = false;      //공이 패들에서 떨어졌는가 (붙어있음)
     public PaddleAnimationControl paddleAnimation;
     //공의 방향
     // Start is called before the first frame update
