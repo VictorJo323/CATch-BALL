@@ -25,10 +25,6 @@ public class GameManager : MonoBehaviour
 
         // 패들 이미지 기본값 정의
 
-        if (DataHolder.Instance.button1==true)
-        {
-            DataHolder.Instance.button2 = false;
-        }
         
 
     }
