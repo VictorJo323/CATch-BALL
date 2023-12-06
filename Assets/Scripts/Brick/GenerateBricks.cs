@@ -24,12 +24,7 @@ public class GenerateBricks : MonoBehaviour
         time += Time.deltaTime;
         if (time > 3&&blockNum <= 9)
         {
-           BlockMove();
-           if (blockNum>1)
-            {
-                GenerateBrick();
-            }
-            
+            BlockMove();
             time = 0;
         }
     }
@@ -43,36 +38,6 @@ public class GenerateBricks : MonoBehaviour
     private void GenerateBrickGroup()
     {
         for (int i= 0; i<70; i++)
-        {
-            GameObject newBrick;
-            int id = giveIDToBricks.GiveBrickID(i);
-            switch (id)
-            {
-                case 1:
-                    newBrick = Instantiate(brick1);
-                    break;
-                case 2:
-                    newBrick = Instantiate(brick2);
-                    break;
-                case 3:
-                    newBrick = Instantiate(brick3);
-                    break;
-                default:
-                    newBrick = Instantiate(brick4);
-                    break;
-            }
-            newBrick.GetComponent<Brick>().SetBrickID(id);
-            newBrick.transform.parent = GameObject.Find("Bricks").transform;
-
-            float x = (i % 10) * 0.54f - 2.44f;
-            float y = (i / 10) * 0.28f;
-            newBrick.transform.position = new Vector2(x, y);
-        }
-    }
-
-    private void GenerateBrick()
-    {
-        for (int i = 0; i < 10; i++)
         {
             GameObject newBrick;
             int id = giveIDToBricks.GiveBrickID(i);
