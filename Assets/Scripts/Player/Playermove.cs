@@ -38,6 +38,7 @@ public class Playermove : MonoBehaviour
 }
 
 
+
     /* Update is called once per frame
     void Update()
     {
@@ -59,7 +60,7 @@ public class Playermove : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * speed);
     }*/
-    
+
     // 클릭한 지점으로 패들이 이동할때의 코드
 
 

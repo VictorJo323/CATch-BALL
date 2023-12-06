@@ -13,19 +13,27 @@ public class GameManager : MonoBehaviour
     public GameObject EndTxt;
     public int PlayerScore;
 
+    public GameObject block;
+    public float time = 0.0f;
+    private int blockNum;
+
     private void Awake()
     {
         I = this;
         PlayerHP = 3;
         PlayerScore = 0;
-    }
 
+        // 패들 이미지 기본값 정의
+
+        
+
+    }
 
 
     // Start is called before the first frame update
     //void Start()
     //{
-        
+
     //}
 
     //// Update is called once per frame
@@ -43,6 +51,6 @@ public class GameManager : MonoBehaviour
     //    EndTxt.SetActive(true);
     //}
 
-   
+
 
 }

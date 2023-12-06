@@ -1483,6 +1483,8 @@ MonoBehaviour:
   PlayerHP: 3
   EndTxt: {fileID: 0}
   PlayerScore: 0
+  block: {fileID: 0}
+  time: 0
 --- !u!4 &925988135
 Transform:
   m_ObjectHideFlags: 0
@@ -2124,7 +2126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgmClip: {fileID: 8300000, guid: 267a0562368421345b5308f4c853e2ab, type: 3}
-  bgmVolume: 0
+  bgmVolume: 0.5
   sfxClips:
   - {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
   - {fileID: 8300000, guid: 9fe330231cc2d4a01aa086aba00b09fd, type: 3}
@@ -2137,7 +2139,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 942c3589344c9124b81a9312b4427bba, type: 3}
   - {fileID: 8300000, guid: c1ff29f22d9f8d84ebc532c21ae41ebe, type: 3}
   - {fileID: 8300000, guid: ea48bbe4be749844581ed2613dbded8d, type: 3}
-  sfxVolume: 0
+  sfxVolume: 0.5
   channels: 16
 --- !u!4 &1288018626
 Transform:
@@ -2512,13 +2514,14 @@ GameObject:
   - component: {fileID: 1331509427}
   - component: {fileID: 1331509431}
   - component: {fileID: 1331509430}
+  - component: {fileID: 1331509432}
   m_Layer: 5
   m_Name: Dog_Idle_01
   m_TagString: Paddle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1331509426
 Transform:
   m_ObjectHideFlags: 0
@@ -2567,6 +2570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a52d3040ce88be45a344efa8ed5b632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataHolder: {fileID: 0}
 --- !u!212 &1331509429
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2691,6 +2695,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
+--- !u!114 &1331509432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331509425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e941559df5db82e49be28f11b482ab96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1340431810
 GameObject:
   m_ObjectHideFlags: 0
@@ -3243,6 +3259,7 @@ GameObject:
   - component: {fileID: 1552855621}
   - component: {fileID: 1552855625}
   - component: {fileID: 1552855624}
+  - component: {fileID: 1552855626}
   m_Layer: 5
   m_Name: Cat_Idle_01
   m_TagString: Paddle
@@ -3350,6 +3367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a52d3040ce88be45a344efa8ed5b632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataHolder: {fileID: 0}
 --- !u!61 &1552855624
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3422,6 +3440,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
+--- !u!114 &1552855626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552855619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e941559df5db82e49be28f11b482ab96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1555831263
 GameObject:
   m_ObjectHideFlags: 0
@@ -3769,6 +3799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff2ff70ca8764f54ab8fc3f51babdcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGameStart: 0
 --- !u!114 &1571405107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3783,8 +3814,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballSpeed: 8
   ballDirection: {x: 0, y: 0}
-  isBallReleased: 0
   paddleAnimation: {fileID: 1552855623}
+  catAnimator: {fileID: 1552855621}
+  dogAnimator: {fileID: 1331509427}
 --- !u!1 &1579197229
 GameObject:
   m_ObjectHideFlags: 0
@@ -4365,6 +4397,7 @@ MonoBehaviour:
   brick2: {fileID: 3348202699983946022, guid: a6103f11fcda28f4fbcea7582286f122, type: 3}
   brick3: {fileID: 3072745690988507878, guid: 425d87877e6c72d4dba07318646edc5d, type: 3}
   brick4: {fileID: 5240546154104962134, guid: d531f6a8532e1c247831874af31e6088, type: 3}
+  time: 0
 --- !u!1 &2068170379
 GameObject:
   m_ObjectHideFlags: 0

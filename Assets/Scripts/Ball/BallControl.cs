@@ -9,13 +9,18 @@ public class BallControl : MonoBehaviour
 {
     public float ballSpeed = 8.0f;
     public Vector2 ballDirection; //공의 속도
-    public bool isBallReleased = false;      //공이 패들에서 떨어졌는가 (붙어있음)
+    static public bool isBallReleased = false;      //공이 패들에서 떨어졌는가 (붙어있음)
     public PaddleAnimationControl paddleAnimation;
+    private DataHolder dataHolder;
+    public Animator catAnimator;
+    public Animator dogAnimator;
+
     //공의 방향
     // Start is called before the first frame update
     public void Start()
     {
         ballDirection = Vector2.up.normalized;      //처음 시작할때 공의 방향을 위쪽으로
+        dataHolder = DataHolder.Instance;
     }
     // Update is called once per frame
     void Update()
@@ -47,7 +52,7 @@ public class BallControl : MonoBehaviour
 
             if (collision.gameObject.CompareTag("Wall"))
             {
-                AudioManager.instance.PlaySfx(AudioManager.Sfx.Wall2Sound); //★벽에 부딪힐때 소리
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.WallSound); //★벽에 부딪힐때 소리
             }
             else
             {
@@ -62,14 +67,29 @@ public class BallControl : MonoBehaviour
             float paddleCenter = collision.transform.position.x;        //패들의 중심 x좌표를 paddlecenter에 저장
             float angle = (hitpoint - paddleCenter) * 2.0f;         // 충돌점과 중심으로 각도 계산
             ballDirection = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)).normalized; // 각도를 기반으로 방향벡터를 만들고 normalized로 크기1로 만듦
-            AudioManager.instance.PlaySfx(AudioManager.Sfx.Cat2Sound); //★패들과 공이 부딪힐때 냐옹~
+
+            if (DataHolder.Instance.button1 == true)
+            {
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Cat2Sound); //★패들과 공이 부딪힐때 냐옹~
+            }
+            else
+            {
+                // ★댕댕이 패들 소리
+            }
         }
 
         if (collision.gameObject.CompareTag("BottomWall"))
         {
             BallRest();
             AudioManager.instance.PlaySfx(AudioManager.Sfx.DropSound);//★바닥에 떨어졌때 소리
-
+            if (DataHolder.Instance.button1)
+            {
+                catAnimator.SetTrigger("IsBallDropCat");
+            }
+            else if (DataHolder.Instance.button2)
+            {
+                dogAnimator.SetTrigger("IsBallDropDog");
+            }
         }
 
     }
@@ -78,6 +98,5 @@ public class BallControl : MonoBehaviour
     {
         GameManager.I.PlayerHP -= 1;
         isBallReleased = false;
-        paddleAnimation.CatCryingAnimation();
     }
 }
