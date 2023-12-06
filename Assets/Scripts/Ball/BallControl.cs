@@ -11,11 +11,16 @@ public class BallControl : MonoBehaviour
     public Vector2 ballDirection; //공의 속도
     static public bool isBallReleased = false;      //공이 패들에서 떨어졌는가 (붙어있음)
     public PaddleAnimationControl paddleAnimation;
+    private DataHolder dataHolder;
+    public Animator catAnimator;
+    public Animator dogAnimator;
+
     //공의 방향
     // Start is called before the first frame update
     public void Start()
     {
         ballDirection = Vector2.up.normalized;      //처음 시작할때 공의 방향을 위쪽으로
+        dataHolder = DataHolder.Instance;
     }
     // Update is called once per frame
     void Update()
@@ -77,7 +82,14 @@ public class BallControl : MonoBehaviour
         {
             BallRest();
             AudioManager.instance.PlaySfx(AudioManager.Sfx.DropSound);//★바닥에 떨어졌때 소리
-
+            if (DataHolder.Instance.button1)
+            {
+                catAnimator.SetTrigger("IsBallDropCat");
+            }
+            else if (DataHolder.Instance.button2)
+            {
+                dogAnimator.SetTrigger("IsBallDropDog");
+            }
         }
 
     }
@@ -86,6 +98,5 @@ public class BallControl : MonoBehaviour
     {
         GameManager.I.PlayerHP -= 1;
         isBallReleased = false;
-        paddleAnimation.CatCryingAnimation();
     }
 }

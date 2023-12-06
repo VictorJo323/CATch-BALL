@@ -5,6 +5,7 @@ using UnityEngine;
 public class PaddleAnimationControl : MonoBehaviour
 {
     private Animator animator;
+    public DataHolder dataHolder;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -26,8 +27,5 @@ public class PaddleAnimationControl : MonoBehaviour
         }
     }
 
-    public void CatCryingAnimation()
-    {
-        animator.SetTrigger("IsBallDrop");
-    }
+
 }

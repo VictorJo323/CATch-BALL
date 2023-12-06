@@ -4,13 +4,14 @@ public class DataHolder : MonoBehaviour
 {
     public static DataHolder Instance;
 
-    private GameObject targetObject;
 
     public bool button1 { get; set; }
     public bool button2 { get; set; }
 
     private void Awake()
     {
+        button1 = true;
+        button2 = false;
         // Singleton 패턴 사용
         if (Instance == null)
         {
