@@ -1230,6 +1230,7 @@ GameObject:
   - component: {fileID: 645237202}
   - component: {fileID: 645237201}
   - component: {fileID: 645237205}
+  - component: {fileID: 645237206}
   m_Layer: 5
   m_Name: Paddle
   m_TagString: Paddle
@@ -1305,6 +1306,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de29c665dff5915469d0068b5f7be13c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &645237206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645237200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9516b3516fa4f0046ae1c5fbe8fba6dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PaddleCAT: {fileID: 1552855619}
+  PaddleDOG: {fileID: 1331509425}
 --- !u!1 &679050972
 GameObject:
   m_ObjectHideFlags: 0
@@ -2530,7 +2545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1331509426
 Transform:
   m_ObjectHideFlags: 0
@@ -3678,7 +3693,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1571405098}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -3796,7 +3811,7 @@ MonoBehaviour:
   ballSpeed: 8
   ballDirection: {x: 0, y: 0}
   isBallReleased: 0
-  paddleAnimation: {fileID: 0}
+  paddleAnimation: {fileID: 1552855623}
 --- !u!1 &1579197229
 GameObject:
   m_ObjectHideFlags: 0
