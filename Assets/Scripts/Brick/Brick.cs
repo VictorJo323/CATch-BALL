@@ -11,4 +11,5 @@ public class Brick : MonoBehaviour
     {
         brickID = id;
     }
+
 }

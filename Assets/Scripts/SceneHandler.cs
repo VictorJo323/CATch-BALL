@@ -5,13 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class SceneHandler : MonoBehaviour
 {
-
+    GameObject[] bricks;
+    public bool isGameStart = false;
     private void Update()
     {
-        if(GameManager.I.PlayerHP <= 0)
+        bricks = GameObject.FindGameObjectsWithTag("Brick");
+        isGameStart = true;
+        if (GameManager.I.PlayerHP <= 0)
         {
             LoadEndScene();
             GameManager.I.PlayerHP += 3;
+        }
+        if(bricks.Length == 1 && isGameStart == true)
+        {
+            isGameStart = false;
+            LoadEndScene();
         }
     }
 
