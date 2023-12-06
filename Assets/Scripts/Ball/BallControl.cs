@@ -62,7 +62,15 @@ public class BallControl : MonoBehaviour
             float paddleCenter = collision.transform.position.x;        //패들의 중심 x좌표를 paddlecenter에 저장
             float angle = (hitpoint - paddleCenter) * 2.0f;         // 충돌점과 중심으로 각도 계산
             ballDirection = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)).normalized; // 각도를 기반으로 방향벡터를 만들고 normalized로 크기1로 만듦
-            AudioManager.instance.PlaySfx(AudioManager.Sfx.Cat2Sound); //★패들과 공이 부딪힐때 냐옹~
+
+            if (DataHolder.Instance.button1 == true)
+            {
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Cat2Sound); //★패들과 공이 부딪힐때 냐옹~
+            }
+            else
+            {
+                // ★댕댕이 패들 소리
+            }
         }
 
         if (collision.gameObject.CompareTag("BottomWall"))

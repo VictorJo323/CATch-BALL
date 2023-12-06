@@ -22,6 +22,15 @@ public class GameManager : MonoBehaviour
         I = this;
         PlayerHP = 3;
         PlayerScore = 0;
+
+        // 패들 이미지 기본값 정의
+
+        if (DataHolder.Instance.button1==true)
+        {
+            DataHolder.Instance.button2 = false;
+        }
+        
+
     }
 
 
