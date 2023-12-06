@@ -24,7 +24,7 @@ public class BallControl : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {
+    {        
         if (!isBallReleased)
         {
             Vector3 paddlePosition = GameObject.Find("Paddle").transform.position;        ////패들 오브젝트의 위치를 찾아옴
@@ -33,6 +33,7 @@ public class BallControl : MonoBehaviour
             transform.position = ballPosition;            //// 공을 패들에 위치
             if (Input.GetButtonDown("Fire1")) //// 공 발사
             {
+                Time.timeScale = 1;
                 isBallReleased = true;        ////공이 패들에서 떨어짐
                 ballDirection = new Vector2(Random.Range(-1f, 1f), 1).normalized;         //// 위쪽 랜덤방향으로 공 발사(직각으로 발사할 경우 random.range를 빼고 좌표룰 설정해준다.
                 AudioManager.instance.PlayBgm(true); // 게임시작할때 BGM을 틀어주는 함수인데 아직 START 함수가 따로 없어서 여기다 넣어뒀어요.
