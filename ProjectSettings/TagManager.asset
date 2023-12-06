@@ -9,6 +9,7 @@ TagManager:
   - Paddle
   - BottomWall
   - Ball
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -16,8 +17,8 @@ TagManager:
   - BottomWall
   - Water
   - UI
-  - Ball^Item
-  - 
+  - Ball
+  - BallItem
   - 
   - 
   - 

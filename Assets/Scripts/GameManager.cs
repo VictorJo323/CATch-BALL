@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public int PlayerHP;
     public GameObject EndTxt;
     public int PlayerScore;
-    public Text ScoreTxt;
 
     private void Awake()
     {
@@ -20,6 +19,8 @@ public class GameManager : MonoBehaviour
         PlayerHP = 3;
         PlayerScore = 0;
     }
+
+
 
     // Start is called before the first frame update
     //void Start()

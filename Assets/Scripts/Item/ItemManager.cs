@@ -32,6 +32,12 @@ public class ItemManager : MonoBehaviour
                     break;
             }
             Destroy(gameObject);
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Eatsound);
+        }
+
+        else if (collision.gameObject.CompareTag("BottomWall"))
+        {
+            Destroy(gameObject);
         }
 
         else if (collision.gameObject.CompareTag("BottomWall"))

@@ -11,11 +11,11 @@ public class AudioManager : MonoBehaviour
     AudioSource bgmPlayer;
     [Header("#SFX")] // 효과음
     public AudioClip[] sfxClips; // 효과음은 배경음악처럼 하나가 아니라 여러가지기 떄문에 배열로 나타내주기
-    public float sfxVolume;
+    public float sfxVolume ;
     public int channels;  // 다량의 효과음을 낼 수 있도록 채널 개수 변수 선언
     AudioSource[] sfxPlayers;
     int channelIndex;
-    public enum Sfx { cannon, card = 2, electronic, heal = 5, laser, magic = 8 }
+    public enum Sfx { ShootSound, Eatsound, HitSound, PaddleSound, WallSound, DropSound,CatSound, Cat2Sound, BreakSound,StoneBreakSound,Wall2Sound}
     private void Awake()
     {
         instance = this;
@@ -40,6 +40,7 @@ public class AudioManager : MonoBehaviour
             sfxPlayers[index] = sfxobject.AddComponent<AudioSource>();
             sfxPlayers[index].playOnAwake = false;
             sfxPlayers[index].volume = sfxVolume;
+            
         }
     }
     public void PlayBgm(bool isPlay)

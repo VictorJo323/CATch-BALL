@@ -10,6 +10,7 @@ public class BallControl : MonoBehaviour
     public float ballSpeed = 8.0f;
     public Vector2 ballDirection; //공의 속도
     public bool isBallReleased = false;      //공이 패들에서 떨어졌는가 (붙어있음)
+    public PaddleAnimationControl paddleAnimation;
     //공의 방향
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,7 @@ public class BallControl : MonoBehaviour
                 isBallReleased = true;        ////공이 패들에서 떨어짐
                 ballDirection = new Vector2(Random.Range(-1f, 1f), 1).normalized;         //// 위쪽 랜덤방향으로 공 발사(직각으로 발사할 경우 random.range를 빼고 좌표룰 설정해준다.
                 AudioManager.instance.PlayBgm(true); // 게임시작할때 BGM을 틀어주는 함수인데 아직 START 함수가 따로 없어서 여기다 넣어뒀어요.
-                AudioManager.instance.PlaySfx(AudioManager.Sfx.cannon); // 공 발사 소리
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.ShootSound); // ★공 발사 소리
             }
         }
         else
@@ -43,7 +44,17 @@ public class BallControl : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Brick")) // 게임오브젝트 Wall 태그에 충돌
         {
             ballDirection = Vector2.Reflect(ballDirection, collision.contacts[0].normal);   // 벽에 충돌할때 방향 반전
-            AudioManager.instance.PlaySfx(AudioManager.Sfx.laser);
+
+            if (collision.gameObject.CompareTag("Wall"))
+            {
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Wall2Sound); //★벽에 부딪힐때 소리
+            }
+            else
+            {
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.BreakSound);//★벽돌에 부딪힐때 소리
+            }
+
+            
         }
         else if (collision.gameObject.CompareTag("Paddle"))     //패들과 충돌할때 방향설정
         {
@@ -51,7 +62,22 @@ public class BallControl : MonoBehaviour
             float paddleCenter = collision.transform.position.x;        //패들의 중심 x좌표를 paddlecenter에 저장
             float angle = (hitpoint - paddleCenter) * 2.0f;         // 충돌점과 중심으로 각도 계산
             ballDirection = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)).normalized; // 각도를 기반으로 방향벡터를 만들고 normalized로 크기1로 만듦
-            AudioManager.instance.PlaySfx(AudioManager.Sfx.magic);
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Cat2Sound); //★패들과 공이 부딪힐때 냐옹~
         }
+
+        if (collision.gameObject.CompareTag("BottomWall"))
+        {
+            BallRest();
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.DropSound);//★바닥에 떨어졌때 소리
+
+        }
+
+    }
+
+    void BallRest()
+    {
+        GameManager.I.PlayerHP -= 1;
+        isBallReleased = false;
+        paddleAnimation.CatCryingAnimation();
     }
 }
