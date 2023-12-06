@@ -2545,7 +2545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1331509426
 Transform:
   m_ObjectHideFlags: 0
@@ -2594,6 +2594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a52d3040ce88be45a344efa8ed5b632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataHolder: {fileID: 0}
 --- !u!212 &1331509429
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3377,6 +3378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a52d3040ce88be45a344efa8ed5b632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataHolder: {fileID: 0}
 --- !u!61 &1552855624
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3812,6 +3814,8 @@ MonoBehaviour:
   ballDirection: {x: 0, y: 0}
   isBallReleased: 0
   paddleAnimation: {fileID: 1552855623}
+  catAnimator: {fileID: 1552855621}
+  dogAnimator: {fileID: 1331509427}
 --- !u!1 &1579197229
 GameObject:
   m_ObjectHideFlags: 0
