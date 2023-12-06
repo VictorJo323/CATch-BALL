@@ -228,6 +228,50 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &205712575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 205712577}
+  - component: {fileID: 205712576}
+  m_Layer: 0
+  m_Name: ButtonData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &205712576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205712575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52294a7a65d6dc040af7780d4b8d964a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &205712577
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205712575}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.66159207, y: -4.9013553, z: -0.012700083}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &404844870
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,6 +451,7 @@ GameObject:
   - component: {fileID: 716062248}
   - component: {fileID: 716062247}
   - component: {fileID: 716062246}
+  - component: {fileID: 716062249}
   m_Layer: 0
   m_Name: ChooseDOGBtn
   m_TagString: Untagged
@@ -479,13 +524,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 716062244}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 716062249}
+        m_TargetAssemblyTypeName: CatButton, Assembly-CSharp
+        m_MethodName: Button2OnOff
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -529,6 +574,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716062244}
   m_CullTransparentMesh: 1
+--- !u!114 &716062249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716062244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9051c675f8b7d4fb808109c9bc200f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1167950933
 RectTransform:
   m_ObjectHideFlags: 0
@@ -595,8 +652,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1167950938}
-        m_TargetAssemblyTypeName: SelectCAT, Assembly-CSharp
-        m_MethodName: OnButtonClick
+        m_TargetAssemblyTypeName: CatButton, Assembly-CSharp
+        m_MethodName: Button1OnOff
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -653,10 +710,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 404844870}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9516b3516fa4f0046ae1c5fbe8fba6dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a9051c675f8b7d4fb808109c9bc200f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObject: {fileID: 4921063002381327125, guid: 7df9f795df5e0194f92628881f40e2e9, type: 3}
 --- !u!1 &1400963794
 GameObject:
   m_ObjectHideFlags: 0

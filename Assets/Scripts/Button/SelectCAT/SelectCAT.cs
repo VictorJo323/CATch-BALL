@@ -7,18 +7,13 @@ using UnityEngine.UI;
 
 public class SelectCAT : MonoBehaviour
 {
-    
+    public GameObject PaddleCAT;
+    public GameObject PaddleDOG;
 
     public void Start()
     {
-        Button button = GetComponent<Button>();
-        button.onClick.AddListener(OnButtonClick);
-    }
-    public void OnButtonClick()
-    {
-        PlayerPrefs.SetInt("ActivateTarget", 1);
-       
+        PaddleCAT.SetActive(DataHolder.Instance.button1);
+        PaddleDOG.SetActive(DataHolder.Instance.button2);
     }
     
-
 }
