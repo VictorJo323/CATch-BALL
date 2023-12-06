@@ -47,7 +47,7 @@ public class BallControl : MonoBehaviour
 
             if (collision.gameObject.CompareTag("Wall"))
             {
-                AudioManager.instance.PlaySfx(AudioManager.Sfx.Wall2Sound); //★벽에 부딪힐때 소리
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.WallSound); //★벽에 부딪힐때 소리
             }
             else
             {
