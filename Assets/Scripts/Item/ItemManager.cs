@@ -39,6 +39,11 @@ public class ItemManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        else if (collision.gameObject.CompareTag("BottomWall"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     static public void iteme1()
