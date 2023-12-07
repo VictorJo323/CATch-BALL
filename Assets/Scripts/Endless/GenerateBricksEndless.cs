@@ -16,6 +16,7 @@ public class GenerateBricksEndless : MonoBehaviour
     public float time = 0.0f;
     private float timeToScore = 4;
     private int levelUp = 1;
+    private int levelUpStandard = 20;
 
     void Start()
     {
@@ -43,9 +44,9 @@ public class GenerateBricksEndless : MonoBehaviour
 
     void LevelUpValue()
     {
-        if (GameManager.I.PlayerScore > levelUp * 100 && GameManager.I.PlayerScore < levelUp * 100 + 100 && timeToScore > 0)
+        if (GameManager.I.PlayerScore > levelUp * levelUpStandard && GameManager.I.PlayerScore < levelUp * levelUpStandard + levelUpStandard && timeToScore > 1)
         {
-            timeToScore -= 0.5f;
+            timeToScore -= 0.2f;
             levelUp++;
         }
     }
