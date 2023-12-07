@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,10 +10,11 @@ public class GenerateBricksEndless : MonoBehaviour
     public GameObject brick2;
     public GameObject brick3;
     public GameObject brick4;
+    public Text levelTxt;
     private GiveIDToBricksEndless giveIDToBricksEndless;
 
     public float time = 0.0f;
-    private int timeToScore = 4;
+    private float timeToScore = 4;
     private int levelUp = 1;
 
     void Start()
@@ -24,9 +26,10 @@ public class GenerateBricksEndless : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
+        levelTxt.text = levelUp.ToString();
         if (time > timeToScore)
         {
-            TimeToScoreSet();
+            LevelUpValue();
             BlockMove();
             GenerateBrickGroup();
             time = 0;
@@ -38,21 +41,11 @@ public class GenerateBricksEndless : MonoBehaviour
         GameObject.Find("Bricks").transform.Translate(new Vector3(0, -0.3f, 0));
     }
 
-    void TimeToScoreSet()
+    void LevelUpValue()
     {
-        if (GameManager.I.PlayerScore > 200 && GameManager.I.PlayerScore < 300 && levelUp == 1)
+        if (GameManager.I.PlayerScore > levelUp * 100 && GameManager.I.PlayerScore < levelUp * 100 + 100 && timeToScore > 0)
         {
-            timeToScore -= 1;
-            levelUp++;
-        }
-        if (GameManager.I.PlayerScore > 300 && GameManager.I.PlayerScore < 400 && levelUp == 2)
-        {
-            timeToScore -= 1;
-            levelUp++;
-        }
-        if (GameManager.I.PlayerScore > 400 && GameManager.I.PlayerScore < 500 && levelUp == 3)
-        {
-            timeToScore -= 1;
+            timeToScore -= 0.5f;
             levelUp++;
         }
     }
