@@ -6,6 +6,8 @@
 - 1차 개발 기간 :: 23.12.01 팀원 별 기능 개발 완료 1차 main merge
 - 2차 개발 기간 :: 23.12.04 1차 main merge 바탕으로 팀원 각자 Brunch로 분배하여 부가 기능 추가
 - 3차 개발 기간 :: 23.12.05 2차 main merge 및 아트, 사운드 리소스 삽입 후, main brunch merge
+- 4차 개발 기간 :: 23.12.06 3차 main merge START씬&END씬 추가 및 UI 삽입, 무한 모드 추가
+- 5차 개발 기간 :: 23.12.07 최종 merge (JYbrunch) 오류 수정
   
 
 ## ✨게임 소개
