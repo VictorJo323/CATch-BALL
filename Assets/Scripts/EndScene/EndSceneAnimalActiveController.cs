@@ -14,7 +14,7 @@ public class EndSceneAnimalActiveController : MonoBehaviour
     {
         if (DataHolder.Instance.button1)
         {
-            if (GameManager.I.PlayerScore >= 20)
+            if (GameManager.I.PlayerScore >= 30)
             {
                 normalCat.SetActive(true);
             }
@@ -25,17 +25,14 @@ public class EndSceneAnimalActiveController : MonoBehaviour
         }
         else if (DataHolder.Instance.button2)
         {
-            if (GameManager.I.PlayerScore >= 20)
+            if (GameManager.I.PlayerScore >= 30)
             {
-                Debug.Log("港港!");
                 normalDog.SetActive(true);
             }
             else
             {
-                Debug.Log("港港...");
                 cryingDog.SetActive(true);
             }
         }
-        
     }
 }

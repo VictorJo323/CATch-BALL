@@ -11,14 +11,14 @@ public class PauseButton : MonoBehaviour
         {
             Time.timeScale = 0;
             gameObject.SetActive(true);
-            AudioManager.instance.PlayBgm(false);
+            AudioManager.instance.PauseBGM();
         }
         
         else
         {
             Time.timeScale = 1;
             gameObject.SetActive(false);
-            AudioManager.instance.PlayBgm(true);
+            AudioManager.instance.UnpauseBGM();
         }
     }
 }

@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour
     [Header("#BGM")]  //배경음악
     public AudioClip bgmClip;
     public float bgmVolume;
-    AudioSource bgmPlayer;
+    public AudioSource bgmPlayer;
     [Header("#SFX")] // 효과음
     public AudioClip[] sfxClips; // 효과음은 배경음악처럼 하나가 아니라 여러가지기 떄문에 배열로 나타내주기
     public float sfxVolume ;
@@ -18,7 +18,13 @@ public class AudioManager : MonoBehaviour
     public enum Sfx { ShootSound, Eatsound, HitSound, PaddleSound, WallSound, DropSound,CatSound, Cat2Sound, BreakSound,StoneBreakSound,Wall2Sound, DogSound}
     private void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         instance = this;
+        DontDestroyOnLoad(gameObject);
         Init();
     }
     void Init()
@@ -65,6 +71,29 @@ public class AudioManager : MonoBehaviour
             sfxPlayers[loopIndex].clip = sfxClips[(int)sfx];
             sfxPlayers[loopIndex].Play();
             break;
+        }
+    }
+    public void SetBGM(AudioClip newBGM, float newVolume)
+    {
+        bgmPlayer.Stop();
+        bgmPlayer.clip = newBGM;
+        bgmPlayer.volume = newVolume;
+        bgmPlayer.Play();
+    }
+
+    public void PauseBGM()
+    {
+        if (bgmPlayer.isPlaying)
+        {
+            bgmPlayer.Pause(); // 배경음악을 일시 정지합니다.
+        }
+    }
+
+    public void UnpauseBGM()
+    {
+        if (bgmPlayer.clip != null && !bgmPlayer.isPlaying)
+        {
+            bgmPlayer.UnPause(); // 일시 정지된 배경음악을 재생합니다.
         }
     }
 }

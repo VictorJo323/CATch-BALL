@@ -48,21 +48,21 @@ public class ItemManager : MonoBehaviour
 
     static public void iteme1()
     {
-        GameManager.I.PlayerScore += 1;
+        GameManager.I.PlayerScore += 3;
     }
     static public void iteme2()
     {
-        GameManager.I.PlayerScore += 2;
+        GameManager.I.PlayerScore += 1;
     }
 
     static public void iteme3()
     {
-        GameManager.I.PlayerScore += 3;
+        GameManager.I.PlayerScore += 2;
     }
 
     static public void iteme4()
     {
-        GameManager.I.PlayerScore += 4;
+        GameManager.I.PlayerScore += 0;
     }
 
     private void OnDisable()
